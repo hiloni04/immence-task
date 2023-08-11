@@ -44,7 +44,8 @@ export const { getUsersStart, getUsersSuccess, getUsersFailure } = usersSlice.ac
 export const fetchUsers = (): AppThunk => async (dispatch, getState) => {
     try {
       dispatch(getUsersStart());
-      const response = await axios.get('http://localhost:5000/'); 
+      console.log(process.env.API_URL)
+      const response = await axios.get(process.env.REACT_APP_API_URL); 
       dispatch(getUsersSuccess(response.data));
     } catch (error: any) {
       if (error instanceof Error) {
